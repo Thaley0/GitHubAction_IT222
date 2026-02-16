@@ -5,19 +5,22 @@ use App\Calculator;
 
 class CalculatorTest extends TestCase
 {
+    private Calculator $calc;
+
+    protected function setUp(): void
+    {
+        $this->calc = new Calculator();
+    }
+
     public function testAdd(): void
     {
-        $calc = new Calculator();
-
-        $this->assertEquals(5, $calc->add(2, 3));
-        $this->assertEquals(0, $calc->add(-1, 1));
+        $this->assertSame(5, $this->calc->add(2, 3));
+        $this->assertSame(0, $this->calc->add(-1, 1));
     }
 
     public function testSubtract(): void
     {
-        $calc = new Calculator();
-
-        $this->assertEquals(1, $calc->subtract(3, 2));
-        $this->assertEquals(-2, $calc->subtract(-1, 1));
+        $this->assertSame(1, $this->calc->subtract(3, 2));
+        $this->assertSame(-2, $this->calc->subtract(-1, 1));
     }
 }
